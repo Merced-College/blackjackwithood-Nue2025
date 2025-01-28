@@ -1,4 +1,6 @@
-package cardGame;
+//Nue Lopez, Veejay Vue, Jacob Butler, ...
+//1/28/2025
+//Card Game With OOD
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,14 +8,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CardGame {
-
+	//Initializes array...
 	private static ArrayList<Card> deckOfCards = new ArrayList<Card>();
 	private static ArrayList<Card> playerCards = new ArrayList<Card>();
 
 
 	public static void main(String[] args) {
+		Scanner input = null; //Input hasn't been used yet.
+		
+		//Added how many cards the player wants.
+		Scanner scnr = new Scanner(System.in);
+		System.out.println("How many cards do you want? ");
+		int numOfCards = scnr.nextInt();
 
-		Scanner input = null;
 		try {
 			input = new Scanner(new File("cards.txt"));
 		} catch (FileNotFoundException e) {
@@ -30,20 +37,22 @@ public class CardGame {
 			deckOfCards.add(newCard);	
 		}
 
-		shuffle();
+		shuffle(); //Shuffles the cards when called for.
 
 		//for(Card c: deckOfCards)
 			//System.out.println(c);
 
-		//deal the player 5 cards
-		for(int i = 0; i < 4; i++) {
+		//deal the player x amount of cards
+		for(int i = 0; i < numOfCards; i++) {
 			playerCards.add(deckOfCards.remove(i));
 		}
 		
+		//Prints out the player's cards.
 		System.out.println("players cards");
 		for(Card c: playerCards)
 			System.out.println(c);
 
+		//Line says if there are any pairs in the decks dealt.
 		System.out.println("pairs is " + checkFor2Kind());
 
 	}//end main
@@ -67,10 +76,11 @@ public class CardGame {
 			Card current = playerCards.get(i);
 			Card next = playerCards.get(i+1);
 			
+			
 			for(int j = i+1; j < playerCards.size(); j++) {
 				next = playerCards.get(j);
-				//System.out.println(" comparing " + current);
-				//System.out.println(" to " + next);
+				//System.out.println(" comparing " + current); //comment out afterwards
+				//System.out.println(" to " + next); //comment out afterwards
 				if(current.equals(next))
 					count++;
 			}//end of inner for
