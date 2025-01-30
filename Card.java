@@ -64,9 +64,8 @@ public class Card {
             suit = suit + "♠";
         }
 
-        return String.format("suit: %s  rank: %10s  value: %10d  picture: %10s", suit, rank, value, picture);
+        return String.format("suit: %-9s  rank: %-9s  value: %-9d  picture: %-9s", suit, rank, value, picture);
     }
-
 
     public boolean equals(Card other){ //This sets up the main program where we can compare if any of the cards match together.
         return rank.equals(other.rank) && value==other.value;
