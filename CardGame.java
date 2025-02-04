@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CardGame {
-	//Initializes array...
+	//Initializes array
 	private static ArrayList<Card> deckOfCards = new ArrayList<Card>();
-	private static ArrayList<Card> playerCards = new ArrayList<Card>();
-	//                                                                                                                                          private static ArrayList<Card> playerCards2 = new ArrayList<Card>();
+	private static ArrayList<Card> playerCards = new ArrayList<Card>();                                                                                                                                    private static ArrayList<Card> playerCards2 = new ArrayList<Card>();
 
 	public static void main(String[] args) {
 		Scanner input = null; //Input hasn't been used yet.
@@ -20,12 +19,18 @@ public class CardGame {
 		Scanner scnr = new Scanner(System.in);
 		System.out.println("How many cards do you want? ");
 		int numOfCards = scnr.nextInt();
+		Players player1 = new Players();
+		
+		//Uses the Players class to put into this. We aren't using this yet.
+		System.out.println("How many players want to play? ");
+		int numPlayers = scnr.nextInt();
+		player1.setPlayerCount(numPlayers);
 
 		//This checks if there is an error, it will accept it even though there is an error. 
-		try {//Reads in from another text file the cards. It is so that way it doesn't take all the space in the main.
+		try { //Reads in from another text file the cards. It is so that way it doesn't take all the space in the main.
 			input = new Scanner(new File("cards.txt"));
 		} catch (FileNotFoundException e) {
-			// error
+			//error
 			System.out.println("error");
 			e.printStackTrace();
 		}
@@ -41,7 +46,7 @@ public class CardGame {
 		shuffle(); //Shuffles the cards when called for.
 		//for(Card c: deckOfCards)
 			//System.out.println(c);
-
+		
 		//deal the player x amount of cards
 		for(int i = 0; i < numOfCards; i++) {
 			//playerCards.get(i).getSuit(); //Gets suit
@@ -73,12 +78,6 @@ public class CardGame {
 		for(int i = 0; i < playerCards.size() - 1; i++) {
 			Card current = playerCards.get(i);
 			Card next = playerCards.get(i+1);
-
-			//Going to add a three of a kind comparison...?
-			/*
-			Card third = playerCards.get(i+2);
-			*/
-			
 			for(int j = i+1; j < playerCards.size(); j++) {
 				next = playerCards.get(j);
 				//System.out.println(" comparing " + current); //comment out afterwards
@@ -90,6 +89,5 @@ public class CardGame {
 				return true;
 		}//end outer for
 		return false;
-	}
-	
+	}//end check for 2 kind class.
 }//end class

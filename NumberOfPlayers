@@ -1,9 +1,0 @@
-public class Player{
-    
-	public static void numOfPlayers(){//idk if this is correct
-		Scanner scnr = new Scanner(System.in);
-		System.out.println("How many players?");
-		int playerCount = scnr.nextInt();
-        array[] playerList = new playerList[playerCount];
-	}
-}//end of class
